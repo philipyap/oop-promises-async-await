@@ -40,4 +40,42 @@
  banana.color = 'red';
  console.log(banana.color)
 
+
+ // Contructor Functions
+
+ function User(name){
+    // this  
+    
+    this.name = name;
+
+     //return this
+
+ }
+
+ let adam = new User('Adam');
+ let pete = new User('Pete');
+ console.log(adam.name);
+ console.log(pete.name);
+
+ function NBAPlayer(name, team, threePointShooter){
+     //this = {}
+     this.name = name;
+     this.team = team;
+     this.threePointShooter = threePointShooter;
+ }
+
+ let steph = new NBAPlayer('Steph Curry', 'Warriors', true);
+
  
+ console.log(steph);
+ console.log(steph.name);
+
+function fruitType(name, color, size){
+
+    this.name = name;
+    this.color = color;
+    this.size = size;
+
+}
+let watermelon = new fruitType('Watermelon', 'Green', 'Huge');
+console.log(watermelon)
