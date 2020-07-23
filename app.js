@@ -62,6 +62,9 @@
      this.name = name;
      this.team = team;
      this.threePointShooter = threePointShooter;
+     this.intro = function(){
+         console.log('hi, my name is ' + this.name);
+     }
  }
 
  let steph = new NBAPlayer('Steph Curry', 'Warriors', true);
@@ -69,13 +72,73 @@
  
  console.log(steph);
  console.log(steph.name);
+ steph.intro();
 
 function fruitType(name, color, size){
 
     this.name = name;
     this.color = color;
     this.size = size;
+    this.intro = function(){
+        console.log('my fruit is ' + this.name)
+    }
 
 }
 let watermelon = new fruitType('Watermelon', 'Green', 'Huge');
 console.log(watermelon)
+watermelon.intro();
+
+
+// class
+class Car {
+    constructor(year, make, model, color){
+        this.year = year;
+        this.make = make;
+        this.model = model;
+        this.color = color;
+    }
+
+    drive(){
+        console.log('Vroom');
+    }
+    intro(){
+        console.log('this is a ' + this.make + ' ' + this.model);
+    }
+}
+
+let tesla = new Car ('2020', 'Tesla', 'Model S', 'red');
+console.log(tesla);
+tesla.drive();
+tesla.intro();
+
+
+// combine with fetch 
+
+class GithubProfile {
+    constructor (username, name, url){
+        this.username = username;
+        this.name = name;
+        this.url = url;
+    }
+    intro(){
+        console.log(`My name is ${this.name} and my username is @${this.username}`)
+    }
+}
+
+fetch('https://api.github.com/users/philipyap')
+.then(response => {
+    return response.json();
+})
+.then(data => {
+    console.log(data);
+    let githubURL = data.url;
+    console.log(githubURL);
+    let githubUsername = data.login;
+    console.log(githubUsername);
+    let githubName = data.name;
+    console.log(githubName);
+
+    let philipyap = new GithubProfile(githubURL, githubName, githubUsername);
+    console.log(philipyap);
+    philipyap.intro();
+})
