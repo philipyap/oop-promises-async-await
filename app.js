@@ -142,3 +142,65 @@ fetch('https://api.github.com/users/philipyap')
     console.log(philipyap);
     philipyap.intro();
 })
+
+// ES5: Part 1
+
+ let isMomHappy = true;
+
+// // Promise
+// let willIGetNewPhone = new Promise(
+//     function (resolve, reject) {
+//         if (isMomHappy) {
+//             let phone = {
+//                 brand: 'Samsung',
+//                 color: 'black'
+//             };
+//             resolve(phone); // fulfilled
+//         } else {
+//             let reason = new Error('mom is not happy');
+//             reject(reason); // reject
+//         }
+
+//     }
+// );
+// console.log(willIGetNewPhone)
+
+let willIGetNewPhone = new Promise((resolve, reject) => {
+    if(isMomHappy) {
+        const phone = {
+        brand:'Iphone',
+        color: 'red'
+    }
+    resolve(phone);
+}
+else {
+    reject('No Phone');
+}
+})
+willIGetNewPhone.then(result =>{
+    console.log(result);
+
+})
+
+//async function
+
+async function printUsers() {
+    const endpoint = 'https://api.github.com/users/philipyap';
+    
+    let philip = await fetch(endpoint).then(res => res.json());
+    console.log(philip);
+  }
+  printUsers();
+
+  // same as..
+  // fetch(endpoint)
+  //.then(response =>{
+  //    return response.json();
+  //})
+
+async function printFacebook(){
+    let faceBookEndpoint = 'https://api.github.com/users/facebook';
+    let philipyap = await fetch(faceBookEndpoint).then(response => response.json());
+    console.log(philipyap);
+}
+printFacebook();
